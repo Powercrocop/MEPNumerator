@@ -1,0 +1,34 @@
+﻿<Window x:Class="MEPNumerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MEPNumerator"
+        xmlns:viewModel="clr-namespace:MEPNumerator.ViewModels"
+        xmlns:view="clr-namespace:MEPNumerator.View"
+        mc:Ignorable="d"
+        Title="MEPNumerator " MaxWidth="560" MaxHeight="400">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:MechanicViewModel}">
+            <view:MechanicView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ElectricViewModel}">
+            <view:ElectricView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:PipingViewModel}">
+            <view:PipingView />
+        </DataTemplate>
+    </Window.Resources>
+            <Grid Background="WhiteSmoke">
+        <TabControl  
+            ItemsSource="{Binding DetailViewModels}" SelectedIndex="0" Background="WhiteSmoke">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Text="{Binding Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
+    </Grid>
+</Window>

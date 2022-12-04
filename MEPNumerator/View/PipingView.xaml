@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="MEPNumerator.View.PipingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MEPNumerator.View"
+             mc:Ignorable="d" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="Black" Header="Prefix type"  FontSize="16"/>
+        <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Vertical"  VerticalAlignment="Center" >
+            <CheckBox IsChecked="{Binding PrefixIsEnabled, Mode=TwoWay}" Margin="13" HorizontalAlignment="Center" />
+            <CheckBox IsChecked="{Binding SystemAbbreviationIsEnabled, Mode=TwoWay}"  Margin="13" HorizontalAlignment="Center" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical"  VerticalAlignment="Center" >
+            <TextBlock Text="Specific:" FontSize="16" Margin="10" HorizontalAlignment="Right" />
+            <TextBlock Text="System abbreviation:" FontSize="16" Margin="10" HorizontalAlignment="Right" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch"  >
+            <TextBox Text="{Binding Prefix, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Height="27" Margin="10" IsEnabled="{Binding PrefixIsEnabled}"/>
+            <ComboBox FontSize="16" Margin="8" ItemsSource="{Binding SystemAbbreviaions}" SelectedItem="{Binding SelectedSystemAbbreviation}" IsEnabled="{Binding SystemAbbreviationIsEnabled}"/>
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Black" Header="Choose parameter" FontSize="16"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="Parameter:" FontSize="16" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+            <TextBlock Text="Overrite value:" FontSize="16" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <ComboBox FontSize="16" Margin="10" ItemsSource="{Binding Parameters}" SelectedItem="{Binding SelectedParameter}" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+            <CheckBox IsChecked="{Binding OverrideParametericIsEnabled}" Margin="13" HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <GroupBox Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="Black" Header="Execution command" FontSize="16" />
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3"  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button  FontSize="16" Width="75" Margin="10,10,10,0" Content="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding SaveCanExecute}" />
+            <Button  FontSize="16" Width="75" Margin="10,10,10,0" Content="Run" Command="{Binding RunCommand}" />
+            <Button  FontSize="16" Width="75" Margin="10,10,10,0" Content="Cancel" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

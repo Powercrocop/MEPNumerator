@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MEPNumerator</Name>
+    <Assembly>MEPNumerator\MEPNumerator.dll</Assembly>
+    <FullClassName>MEPNumerator.App</FullClassName>
+    <ClientId>7e21dc94-1be0-4e48-891a-23b0f6a328f8</ClientId>
+
+    <VendorId>Filip Matusiak</VendorId>
+    <VendorDescription>Filip Matusiak</VendorDescription>
+  </AddIn>
+</RevitAddIns>
